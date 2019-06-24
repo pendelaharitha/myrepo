@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>showpage</title>
+    <title>show page</title>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+    thead{
+        color:green;
+
+    }
+    tbody{
+        color:red;
+    }
+</style>
+<body>
+<form method="get">
+    <center>
+    <h2>Your Deatils here...</h2>
+        <table class="table-bordered table-hover">
+            <thead class="text-center">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>User Name</th>
+                <th>Password</th>
+                <th>Mobile</th>
+                <th>Operations</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for employees in employee %}
+                    {% if employees %}
+                        <td>{{ employees.first_name }}</td>
+                        <td>{{ employees.last_name }}</td>
+                        <td>{{ employees.email }}</td>
+                        <td>{{ employees.user_name }}</td>
+                        <td>{{ employees.password }}</td>
+                        <td>{{ employees.mobile }}</td>
+                        <td><a href="/update/{{ employees.id }}"><span class="glyphicon glyphicon-pencil">UPDATE</span></a></td>
+                        <td><a href="/delete/ {{ employees.id }}"><span >DELETE</span></a></td>
+                    {% else %}
+                        <h1>DATA IS NOT AVAILABLE</h1>
+                    {% endif %}
+
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </center>
+</form>
+</body>
+</html>
